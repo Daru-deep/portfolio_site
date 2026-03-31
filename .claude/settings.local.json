@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p css html)",
+      "Bash(mv stylesheet.css css/)",
+      "Bash(mv Portfolio_style.css css/)",
+      "Bash(mv destyle.css css/)",
+      "Bash(mv indexpage/style.css css/)",
+      "Bash(mv css/stylesheet.css css/common.css)",
+      "Bash(mv css/Portfolio_style.css css/portfolio-old.css)",
+      "Bash(mkdir -p indexpage)",
+      "Bash(mv css/style.css indexpage/style.css)"
+    ]
+  }
+}

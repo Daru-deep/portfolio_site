@@ -1,0 +1,118 @@
+@font-face {
+    font-family: 'chillFont';
+    src: url('../fonts/ChilloutTYP-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ========== HERO ========== */
+.top-wrapper {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#top-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+#top-image img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.top-contents {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100vh;
+    object-fit: contain;
+    margin-left: 25%;
+}
+
+.hero-texts
+{   
+    position: absolute;
+    top:30%;
+    right: 43%;
+    letter-spacing: 1px;
+}
+
+.hero-text
+{
+    font-family: chillFont;
+    font-size: 5em;
+}
+
+.hero-sub {
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+}
+
+/* ========== ABOUT ========== */
+#about .contents {
+    display: flex;
+    margin: 30px auto;
+    width: 50%;
+}
+
+#about .texts {
+    text-align: left;
+}
+
+#about img {
+    width: 100px;
+    height: 100px;
+    background-color: #333;
+    border-radius: 70%;
+    margin-right: 30px;
+}
+
+#about .name {
+    margin: 7px 0;
+    font-weight: 550;
+    color: #eee;
+}
+
+#about .text {
+    font-size: 14px;
+    color: #bbb;
+}
+
+/* ========== NEWS ========== */
+#news dl {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: solid 1px #333;
+    margin-bottom: 20px;
+}
+
+#news dt {
+    width: 20%;
+    border-bottom: solid 1px #333;
+    padding: 15px;
+    margin: 0;
+    color: #999;
+}
+
+#news dd {
+    width: 80%;
+    border-bottom: solid 1px #333;
+    padding: 15px;
+    margin: 0;
+    color: #ccc;
+}

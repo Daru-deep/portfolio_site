@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Susan — Portfolio</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>const HEADER_URL = 'html/header.html';</script>
+    <script src="js/header.js"></script>
+
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <section id="main">
+
+  
+
+        <section id="work" class="wrapper">
+            <h3 class="title">Work</h3>
+            <h4 class="title">GAMES</h4>
+            <ul class="contents">
+
+
+
+                <li class="contents-item">
+                    <img src="img/ss_game1_1.png" height=200px>
+                    <p class="item-In in-1">TGKE</p>
+                </li>
+
+                <li class="contents-item">
+                   
+                    <img  src="img/ss_game2_1.png" height=200px>
+
+                    <p class="item-In in-2">数字当てゲーム</p>
+                </li>
+
+                <li class="contents-item">
+                    <img src="img/ss_dentaku.png" height=200px>
+                    <p class="item-In in-3">２進数計算機</p>
+                </li>
+
+                <li class="contents-item">
+                    <img src="img/ss_game3_1.png" height=200px>
+                    <p class="item-In in-4">ぷよぷよ風パズルゲーム</p>
+                </li>
+
+                <li class="contents-item">
+                    <img src="img/ss_game4_1.png" height=200px>
+                    <p class="item-In in-5">にゃんこ大戦争風ストラテジーゲーム</p>
+                </li>
+                <li class = "contents-item">
+                    <img src="img/ss_game5_1.png" height=200px>
+                    <p class="item-In in-6">弾幕シューティングゲーム</p>
+                </li>
+
+
+            </ul>
+
+            <div class="more_portfolio">
+
+                タイトルをクリックすると詳細が表示されるよ
+
+
+
+            </div>
+
+
+            <div id="modals-container"></div>
+            <script>
+                Promise.all([
+                    'html/modals/modal-tgke.html',
+                    'html/modals/modal-number-guess.html',
+                    'html/modals/modal-binary-calc.html',
+                    'html/modals/modal-puyo-puzzle.html',
+                    'html/modals/modal-strategy.html'
+                ].map(url => fetch(url).then(r => r.text())))
+                .then(htmls => {
+                    document.getElementById('modals-container').innerHTML = htmls.join('');
+                });
+            </script>
+            <div id="skill" class="wrapper">
+                <h3 class="title">Skills</h4>
+                    <div class="languages">
+                        <h4 class="littleSection-title">使用可能言語</h4>
+                        <ul class="language">
+                            <li>Java<br>(3か月　2024年10月～2025年1月)</li>
+                            <li>Unity<br>(16か月　2025年01月～2026年4月現在)</li>
+                            <li>HTML<br>(11か月　2025年5月～2026年4月現在)</li>
+                            <li>JavaScript<br>(11か月　2025年5月～2026年4月現在)</li>
+                            <li>JQuery<br>(１か月　2025年5月)</li>
+                            <li>GitHub<br>(1か月　2025年11月～2026年4月現在)</li>
+                        </ul>
+                    </div>
+
+                    <div class="licences">
+                        <h4 class="littlesection-title">所有資格</h4>
+                        <ul>
+                            <li class="licence">ITパスポート</li>
+                            <li class="licence">基本情報技術者試験（勉強中）</li>
+                            <li class="licence">普通自動車第一種免許（勉強中）</li>
+                        </ul>
+                    </div>
+            </div>
+            <section id="links" class="wrapper">
+                <h3 class="title">Links</h3>
+                <a href="https://github.com/Daru-deep" target="_blank" >
+                <img src="https://img.shields.io/badge/GitHub-Daru--deep-black?logo=github"  class="github-badge">
+                </a>
+            </section>
+
+
+            <section id = "movie" class="wrapper">
+                <h3 class="title">movie</h3>
+                <ul class="contents">
+                    <li>
+                        <iframe src="https://www.youtube.com/embed/E4AIowZitqw?si=WNMlzTcoGIo_qpi9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                    <li>
+                        <iframe src="https://www.youtube.com/embed/1V2jEQguOpU?si=StnkMDHxymp_Zbz7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                    <li>
+                        <iframe src="https://www.youtube.com/embed/8Ju5Z83Azr8?si=meuriD5iZPhU-Aui" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                    <li>
+                        <iframe src="https://www.youtube.com/embed/Rwfk5opWr_Y?si=TxqicZDLP8EA6jIF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                    <li>
+                        <iframe src="https://www.youtube.com/embed/h7o9gm4CjR0?si=3DRt02u3JORH_ezm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </li>
+                </ul>
+            </section>
+
+        </section>
+
+        <footer id="footer">
+            &copy; 2026 Susan — made with too much free time
+        </footer>
+        <script>
+
+        </script>
+        <script type="text/javascript" src="js/modal.js"></script>
+</body>
+
+</html>

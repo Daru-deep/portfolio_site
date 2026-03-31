@@ -29,6 +29,112 @@
 
 ---
 
+## 4. ヘッダー・ヒーロー・デザイン刷新
+
+### ハンバーガーメニュー化（`header.html` / `stylesheet.css` / `js/header.js`）
+- ヘッダーをハンバーガーボタン＋左からスライドするドロワーナビに変更
+- ボタンは `position: fixed; top: 20px; left: 20px` で常時表示、三本線のみ（背景なし）
+- ドロワー開閉は `header.js` の fetch 注入後にイベントリスナーを設定
+
+### ダークモード化（`stylesheet.css`）
+- `body` を `background: #0a0a0a; color: #ddd` のダークベースに変更
+- ハンバーガー線・ナビリンク・ボーダー・モーダルなど全体をダーク配色に統一
+
+### CSS の分離（`stylesheet.css` / `indexpage/style.css`）
+- index 専用スタイル（hero・about・news）を `indexpage/style.css` に切り出し
+- `stylesheet.css` は共通（ハンバーガー・ナビ・games ページ用）として残す
+- `index.html` の読み込み順を `stylesheet.css` → `indexpage/style.css` に修正
+
+### ヒーローセクション（`index.html` / `indexpage/style.css` / `js/slider.js`）
+- `img/topImage/` のスライダーを背景（`position: absolute; z-index: 0`）に配置
+- `img/hero_white.png` をその上に重ねて表示（`position: relative; z-index: 1`）
+- スライダーをスライド式 → フェード切り替え（`fade: true`）に変更
+
+---
+
+## 5. ファイル整理・リネーム・パス修正
+
+### フォルダ構成の整理
+- `indexpage/` フォルダを新規作成し、`css/style.css`（index専用スタイル）を移動
+
+### ファイルリネーム（意味を明確化）
+
+| 変更前 | 変更後 | 理由 |
+|---|---|---|
+| `css/stylesheet.css` | `css/common.css` | 全ページ共通スタイル |
+| `css/Portfolio_style.css` | `css/portfolio-old.css` | 旧ポートフォリオページ用 |
+| `css/style.css` | `indexpage/style.css` | index専用スタイル（移動） |
+| `js/script.js` | `js/modal.js` | モーダル開閉処理 |
+| `html/Portfolio.html` | `html/modal-game1.html` | ゲーム1モーダルフラグメント |
+| `html/Portfolio_2.html` | `html/portfolio-old.html` | 旧ポートフォリオページ |
+| `Illustration/illust_style.css` | `Illustration/style.css` | スタイルシート標準命名 |
+| `Illustration/illustPage.html` | `Illustration/index.html` | セクションのトップページ |
+
+### パス修正
+
+| ファイル | 修正内容 |
+|---|---|
+| `index.html` | `css/common.css` の読み込みを追加 |
+| `html/games.html` | `stylesheet.css` → `common.css`、`script.js` → `modal.js` |
+| `html/header.html` | `stylesheet.css` → `common.css`、Illustrationリンク先を `Illustration/index.html` に修正 |
+| `html/portfolio-old.html` | CSS・画像・ナビリンクの壊れたパスをすべて修正 |
+| `Illustration/index.html` | `illust_style.css` → `style.css` |
+
+---
+
+## 9. 本名の削除
+
+- `DENTAKU/Dentaku.html` — 本名表示を `Susan` に変更
+- `games.html` — フッターの本名を `Susan` に変更
+- `FIXES.md` — 本名の記載なしを確認済み
+
+---
+
+## 8. Illustration のルートページ化・モーダル分割
+
+### Illustration をルートページ化
+- `Illustration/index.html` → `illustration.html`（ルートへ移動）
+- `Illustration/style.css` → `css/illustration.css`（CSS フォルダへ統合）
+- `illustration.html` のパスを修正し `HEADER_URL = 'html/header.html'` を追加
+- `html/header.html` の ILLUSTRATION リンクを `illustration.html` に更新
+
+### games.html のモーダルを別ファイルに分割
+- `html/modals/` フォルダを新規作成し、ゲームごとにモーダルHTMLを分離
+
+| ファイル | 内容 |
+|---|---|
+| `html/modals/modal-tgke.html` | The Gun Knows Everything |
+| `html/modals/modal-number-guess.html` | すうじあてげーむ |
+| `html/modals/modal-binary-calc.html` | 二進数電卓 |
+| `html/modals/modal-puyo-puzzle.html` | ぷよぷよ風パズルゲーム |
+| `html/modals/modal-strategy.html` | にゃんこ大戦争風ストラテジーゲーム |
+
+- `games.html` のモーダルHTML を `<div id="modals-container">` + `Promise.all` フェッチに置き換え
+- `js/modal.js` を `.click()` → `$(document).on('click', ...)` のイベント委任方式に変更（非同期ロード対応）
+
+---
+
+## 7. games.html をルートへ移動・ヘッダーナビのパス統一
+
+- **問題**: `header.html` のリンクが `html/` フォルダ基準の相対パスだったため、ルートの `index.html` から注入するとリンクが壊れていた（`games.html` や `../index.html` が見つからない）
+- **修正**:
+  - `html/games.html` → `games.html`（ルートへ移動）
+  - `games.html` 内のパスを `../css/`・`../js/`・`../img/` → `css/`・`js/`・`img/` に修正
+  - `games.html` の `HEADER_URL` を `'header.html'` → `'html/header.html'` に修正
+  - `html/header.html` 内のナビリンク・CSS・JS の `../` プレフィックスをすべて除去（常にルート基準で動作するため）
+
+---
+
+## 6. header.js のパス問題修正
+
+- **問題**: `header.js` が `fetch("header.html")` とハードコードしていたため、ルートの `index.html` から呼ぶと `html/header.html` が見つからずヘッダーが表示されなかった
+- **修正**:
+  - `header.js` を `HEADER_URL` 変数があればそれを使い、なければ `"header.html"` をデフォルトにするよう変更
+  - `index.html` に `<script>const HEADER_URL = 'html/header.html';</script>` を追加
+  - `html/games.html` はすでに `const HEADER_URL = 'header.html'` を定義済みのため変更不要
+
+---
+
 ## 3. movieセクション iframe のレイアウト修正
 
 - **問題**: `<iframe width="560" height="315">` とHTML属性でサイズを固定していたため、グリッドのセル幅（約475px）をはみ出しており中央に揃わなかった。HTML属性はCSSより優先されるため、CSS側でいくら制御しても効かなかった
