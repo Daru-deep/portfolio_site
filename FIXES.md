@@ -29,6 +29,22 @@
 
 ---
 
+## 3. movieセクション iframe のレイアウト修正
+
+- **問題**: `<iframe width="560" height="315">` とHTML属性でサイズを固定していたため、グリッドのセル幅（約475px）をはみ出しており中央に揃わなかった。HTML属性はCSSより優先されるため、CSS側でいくら制御しても効かなかった
+- **修正**:
+  - HTML の `width="560" height="315"` 属性をすべて削除
+  - CSS に以下を追加し、セル幅に合わせて16:9を維持するよう変更
+
+```css
+#movie iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+```
+
+---
+
 ## 4. ヘッダー・ヒーロー・デザイン刷新
 
 ### ハンバーガーメニュー化（`header.html` / `stylesheet.css` / `js/header.js`）
@@ -53,6 +69,7 @@
 ---
 
 ## 5. ファイル整理・リネーム・パス修正
+> 2026-03-31 (AI作業)
 
 ### フォルダ構成の整理
 - `indexpage/` フォルダを新規作成し、`css/style.css`（index専用スタイル）を移動
@@ -82,15 +99,31 @@
 
 ---
 
-## 9. 本名の削除
+## 6. header.js のパス問題修正
+> 2026-03-31 (AI作業)
 
-- `DENTAKU/Dentaku.html` — 本名表示を `Susan` に変更
-- `games.html` — フッターの本名を `Susan` に変更
-- `FIXES.md` — 本名の記載なしを確認済み
+- **問題**: `header.js` が `fetch("header.html")` とハードコードしていたため、ルートの `index.html` から呼ぶと `html/header.html` が見つからずヘッダーが表示されなかった
+- **修正**:
+  - `header.js` を `HEADER_URL` 変数があればそれを使い、なければ `"header.html"` をデフォルトにするよう変更
+  - `index.html` に `<script>const HEADER_URL = 'html/header.html';</script>` を追加
+  - `html/games.html` はすでに `const HEADER_URL = 'header.html'` を定義済みのため変更不要
+
+---
+
+## 7. games.html をルートへ移動・ヘッダーナビのパス統一
+> 2026-03-31 (AI作業)
+
+- **問題**: `header.html` のリンクが `html/` フォルダ基準の相対パスだったため、ルートの `index.html` から注入するとリンクが壊れていた（`games.html` や `../index.html` が見つからない）
+- **修正**:
+  - `html/games.html` → `games.html`（ルートへ移動）
+  - `games.html` 内のパスを `../css/`・`../js/`・`../img/` → `css/`・`js/`・`img/` に修正
+  - `games.html` の `HEADER_URL` を `'header.html'` → `'html/header.html'` に修正
+  - `html/header.html` 内のナビリンク・CSS・JS の `../` プレフィックスをすべて除去（常にルート基準で動作するため）
 
 ---
 
 ## 8. Illustration のルートページ化・モーダル分割
+> 2026-03-31 (AI作業)
 
 ### Illustration をルートページ化
 - `Illustration/index.html` → `illustration.html`（ルートへ移動）
@@ -114,37 +147,26 @@
 
 ---
 
-## 7. games.html をルートへ移動・ヘッダーナビのパス統一
+## 9. 本名の削除
+> 2026-03-31 (AI作業)
 
-- **問題**: `header.html` のリンクが `html/` フォルダ基準の相対パスだったため、ルートの `index.html` から注入するとリンクが壊れていた（`games.html` や `../index.html` が見つからない）
-- **修正**:
-  - `html/games.html` → `games.html`（ルートへ移動）
-  - `games.html` 内のパスを `../css/`・`../js/`・`../img/` → `css/`・`js/`・`img/` に修正
-  - `games.html` の `HEADER_URL` を `'header.html'` → `'html/header.html'` に修正
-  - `html/header.html` 内のナビリンク・CSS・JS の `../` プレフィックスをすべて除去（常にルート基準で動作するため）
+- `DENTAKU/Dentaku.html` — 本名表示を `Susan` に変更
+- `games.html` — フッターの本名を `Susan` に変更
+- `FIXES.md` — 本名の記載なしを確認済み
 
 ---
 
-## 6. header.js のパス問題修正
+## 10. @import 順序エラーの修正・illustration 縦横比修正
+> 2026-03-31 (AI作業)
 
-- **問題**: `header.js` が `fetch("header.html")` とハードコードしていたため、ルートの `index.html` から呼ぶと `html/header.html` が見つからずヘッダーが表示されなかった
-- **修正**:
-  - `header.js` を `HEADER_URL` 変数があればそれを使い、なければ `"header.html"` をデフォルトにするよう変更
-  - `index.html` に `<script>const HEADER_URL = 'html/header.html';</script>` を追加
-  - `html/games.html` はすでに `const HEADER_URL = 'header.html'` を定義済みのため変更不要
+- **`css/common.css`**: `@font-face` が `@import` より前にあったため `@import` が無視されていた → `@import` を先頭に移動
+- **`css/illustration.css`**: `display: flex` のデフォルト `align-items: stretch` で画像が引き伸ばされていた → `align-items: flex-start` を追加
 
 ---
 
-## 3. movieセクション iframe のレイアウト修正
+## 11. VHS.css のローカル化
+> 2026-03-31 (AI作業)
 
-- **問題**: `<iframe width="560" height="315">` とHTML属性でサイズを固定していたため、グリッドのセル幅（約475px）をはみ出しており中央に揃わなかった。HTML属性はCSSより優先されるため、CSS側でいくら制御しても効かなかった
-- **修正**:
-  - HTML の `width="560" height="315"` 属性をすべて削除
-  - CSS に以下を追加し、セル幅に合わせて16:9を維持するよう変更
-
-```css
-#movie iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-}
-```
+- **問題**: `http://` のCDN参照がブラウザのMixed Contentポリシーでブロックされていた
+- **修正**: ファイルを `css/vhs.min.css` としてローカル保存し参照を変更
+- **その後**: 使用しないことになったため `css/vhs.min.css` を削除、`index.html` の参照も削除
