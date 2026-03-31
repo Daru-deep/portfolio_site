@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 @font-face {
     font-family: "ぽーらリリィ B";
     src: url("../fonts/PaulaLily-B.otf") format("opentype");
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 body, p, ul, td, th, li, a {
     margin: 0;

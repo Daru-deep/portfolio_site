@@ -9,7 +9,8 @@
       "Bash(mv css/stylesheet.css css/common.css)",
       "Bash(mv css/Portfolio_style.css css/portfolio-old.css)",
       "Bash(mkdir -p indexpage)",
-      "Bash(mv css/style.css indexpage/style.css)"
+      "Bash(mv css/style.css indexpage/style.css)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
