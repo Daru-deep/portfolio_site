@@ -164,6 +164,25 @@
 
 ---
 
+## 12. 弾幕モーダルの追加
+> 2026-04-03 (AI作業)
+
+- `html/modals/modal-danmaku.html` を新規作成
+- IDが `game2_wrapper` と重複していたため `game6_wrapper` に修正
+- `js/modal.js` に `.in-6` クリックで `#game6_wrapper` を開く処理を追加
+
+---
+
+## 13. ai_task.html の新規作成・整備
+> 2026-04-03 (AI作業)
+
+- `ai_task.html` を新規作成（タスクマネージャープロジェクトの紹介ページ）
+- `app_task/ai_task.css` を専用CSSとして新規作成
+- `<li><ul><li>` の不正なネスト構造を `<div class="container">` に修正（画像が小さくなる原因）
+- `<style>` タグをテキスト表示に誤用していた箇所を `<small>` タグに修正
+
+---
+
 ## 11. VHS.css のローカル化
 > 2026-03-31 (AI作業)
 

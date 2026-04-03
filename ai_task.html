@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="illustration/illustration.css">
+    <link rel="stylesheet" href="app_task/ai_task.css">
+    <link rel="stylesheet" href="css/img-modal.css">
     <script>const HEADER_URL = 'html/header.html';</script>
     <script src="js/header.js"></script>
+    <script src="js/img-modal.js" defer></script>
 </head>
 <body>
     <div id="header"></div>
@@ -16,36 +18,24 @@
                 当時、無理にタスクを抱え込み過ぎた結果、ひどい体調の崩し方をしてしまったことがあったので、その改善方法として考え、制作しました。<br>
                 <br>
                 AIと会話する中で、体調やタスクを把握させ、一日の最後にテンプレートに沿った日誌.jsonを出力させます。<br>
-                そのデータを読み込み、ＡＰＩに問い合わせて登録したタスクから適切な日時を提案させます。<br>
+                そのデータを読み込み、ＡＰＩに問い合わせて登録したタスクから適切な優先順位を提案させます。<br>
                 こだわった点としては、タスクにタグ情報を付ける事で、タスクの重さや、優先度、どのプロジェクトに属したものかを把握したうえで提案をさせることができる事です。<br>
                 <br>
                 また、今回は実用を急いだことや、触れたことのない言語だったことなどから、コーディングにＡＩを使用しました。<br>
-                その中でもPythonの基礎的な書き方を事前に学習したり、分からない書き方はＡＩに質問するなどして、理解を深めました。
+                その中でもPythonの基礎的な書き方を事前に学習したり、分からない書き方はAIに質問するなどして、理解を深めました。<br>
+                <br>
+                特に、AIに頼ったとしても、使用する上での想定外、例えば入力される大文字小文字のずれ、出力された日誌がテンプレートに従っていないなどの<br>
+                例外については自分で気が付くしかなく、技術が求められました。<br>
+                <small>外部入力扱うとこういうのが大変なんだなって理解しました。</small>
             </p>
         </div>
         <section id="work" class="wrapper">
-            <h3 class="title">Illusts</h3>
-            <li class="contents">
-                <ul>
-                    <li class="container">
-                        <img src ="img/illustlation_img/illust.jpg" class="picture">
-                        <img src ="img/illustlation_img/illust2.jpg" class="picture">
-                        <img src ="img/illustlation_img/illust3.jpg" class="picture">
-                    </li>
-                </ul>
-            </li>
-
-            <h3 class="title">Events</h3>
-            
-            <div class="contents">
-                <ul>    
-                    <li class="container">
-                        <img src ="img/illustlation_img/niziso2.jpg" class="picture">
-                        <img src ="img/illustlation_img/niziso.jpg" class="picture">
-                        <img src ="img/illustlation_img/niziso3.jpg" class="picture">
-                    </li>
-                </ul>
-                <p>時折、イベントにサークル参加をしてます。楽しい</p>
+            <h3 class="title">Screenshot</h3>
+            <div class="container">
+                <img src ="img/task_screen/task0.png" class="picture">
+                <img src ="img/task_screen/task1.png" class="picture">
+                <img src ="img/task_screen/task2.png" class="picture">
+                <img src ="img/task_screen/task3.png" class="picture">
             </div>
 
         </section>

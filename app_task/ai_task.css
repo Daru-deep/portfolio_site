@@ -1,0 +1,32 @@
+body {
+    background: #0a0a0a;
+    color: #ddd;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title {
+    padding: 1rem 0;
+}
+
+#massage p {
+    line-height: 2;
+}
+
+
+#work .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#work .container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}

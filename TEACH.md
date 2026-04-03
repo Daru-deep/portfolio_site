@@ -58,6 +58,77 @@
 
 ---
 
+## モーダルの仕組み（このプロジェクトの構成）
+> 2026-04-03
+
+**Q**: モーダルを新しく追加するにはどうすればいい？
+
+**A**: 3点セットで動く。
+1. `html/modals/` に新しいHTMLを作る（`<section id="gameN_wrapper">`、IDは重複しないこと）
+2. `games.html` の fetch リストにそのファイルを追加
+3. `js/modal.js` に `.in-N` クリックで `#gameN_wrapper` を開く処理を追加
+
+クリック（`.in-N`）→ modal.js が検知 → `$('#gameN_wrapper').fadeIn()` → モーダル表示、という流れ。
+
+---
+
+## `<ul><li>` の正しい使い方
+> 2026-04-03
+
+**Q**: `ul` や `li` を使ったらだめなの？
+
+**A**: ダメではない。ただし構造が正しい必要がある。
+
+```html
+<!-- NG: ulの外にliが単独でいる（無効なHTML） -->
+<li>
+  <ul>
+    <li>内容</li>
+  </ul>
+</li>
+
+<!-- OK: ulの中にliが入る -->
+<ul>
+  <li>内容</li>
+  <li>内容</li>
+</ul>
+```
+
+画像を並べるだけなら `div` のほうがシンプル。「作品リスト」として意味を持たせたいなら `ul/li` でも良い。
+
+---
+
+## jQueryと生JSの違い
+> 2026-04-03
+
+**Q**: jQueryを使った書き方と、JSで直接書く方法の違いは？
+
+**A**: jQueryはJSのライブラリ（便利関数集）。内部はJSで動いているのでできることは同じ、書き方が違うだけ。
+
+| 操作 | jQuery | 生JS |
+|---|---|---|
+| 要素取得 | `$('.cls')` | `document.querySelectorAll('.cls')` |
+| クリック | `$('.cls').on('click', fn)` | `addEventListener('click', fn)` |
+| 表示 | `$('#el').fadeIn()` | `el.style.display = 'flex'` |
+| HTML追加 | `$('body').append('<div>')` | `document.createElement('div')` など |
+
+- **jQuery**: 記述が短くfadeIn等が簡単。ただし読み込みが必要でタイミング依存が生じやすい
+- **生JS**: 依存なし・どこでも動く。現代の現場ではこちらが主流
+
+`img-modal.js` をjQueryから生JSに書き直したのは、jQueryの読み込みタイミングに依存させたくなかったため。
+
+---
+
+## `<style>` タグはテキスト表示に使えない
+> 2026-04-03
+
+**Q**: `<style font: size 5px;>テキスト</style>` と書いたらエラーになった
+
+**A**: `<style>` はCSSを書く場所であり、テキストを表示するものではない。属性の書き方も無効。
+小さい文字を表示したい場合は `<small>` か `<span style="font-size: 0.8em;">` を使う。
+
+---
+
 ## ブラウザキャッシュのクリア
 > 2026-03-31
 
