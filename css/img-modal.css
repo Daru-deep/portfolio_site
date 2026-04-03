@@ -1,3 +1,7 @@
+.picture {
+    cursor: zoom-in;
+}
+
 #img-modal-overlay {
     display: none;
     position: fixed;
