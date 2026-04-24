@@ -4,25 +4,49 @@
     <meta charset="UTF-8">
     <title>Susan — App 3</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="app_task/app1.css">
+    <link rel="stylesheet" href="app_task/common.css">
+    <link rel="stylesheet" href="css/img-modal.css">
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <script>const HEADER_URL = 'html/header.html';</script>
     <script src="js/header.js"></script>
+    <script src="js/img-modal.js" defer></script>
 </head>
 <body>
     <div id="header"></div>
 
     <div id="main">
         <div id="message" class="wrapper">
-            <h3 class="title">App 3</h3>
+            <h3 class="title">困りごと解決辞書</h3>
             <p>
-                現在制作中です。
+                発達障碍やグレーゾーンの方向けの書籍学習を手助けする辞書です。<br>
+                自分以外にも需要があるアプリを作ろうと考え、出たアイディアを元に作ったアプリです。<br>
+                特に、困りごと毎に纏めて、解決方法をメモすることができ、通常のメモよりも対策の整理がしやすくなっています。<br>
+                意識した点は、人が使うときに便利な機能は何かを考え、タグ付けや満足度でのソート機能を付けた点です。
             </p>
         </div>
     </div>
+            <section id="work" class="wrapper">
+            <h3 class="title">Screenshot</h3>
+            <div class="container">
+                <img class="picture" src="img/App2_img/app2_img (1).jpg" alt="App2 スクリーンショット1">
+                <img class="picture" src="img/App2_img/app2_img (2).jpg" alt="App2 スクリーンショット2">
+                <img class="picture" src="img/App2_img/app2_img (3).jpg" alt="App2 スクリーンショット3">
+                <img class="picture" src="img/App2_img/app2_img (4).jpg" alt="App2 スクリーンショット4">
+            </div>
+        </section>
 
     <footer>
         &copy; 2026 Susan — made with too much free time
     </footer>
 </body>
 </html>
+<style>
+    #work .container{
+            grid-template-columns: repeat(4, 1fr);
+    }
+   #work img {
+        max-height: 500px;
+        max-width: 250px;
+   }
+
+</style>
